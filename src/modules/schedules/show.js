@@ -21,7 +21,7 @@ export function schedulesShow({ dailyScheduled }) {
       // Adiciona o id
       item.setAttribute("data-id", schedule.id.id);
 
-      time.textContent = dayjs(schedule.id.when).format("HH:MM:ss");
+      time.textContent = dayjs(schedule.id.when).format("HH:mm");
       name.textContent = schedule.id.nome;
 
       // Cria ícone de cancelar agendamento
