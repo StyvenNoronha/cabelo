@@ -1,7 +1,9 @@
+import {schedulesDay} from "./load.js"
+import {scheduleCancel} from "../../services/schedule-cancel.js"
 const periods = document.querySelectorAll(".period")
 
 periods.forEach((period)=>{
-    period.addEventListener("click",(event)=>{
+    period.addEventListener("click", async (event)=>{
         if(event.target.classList.contains("cancel-icon")){
             //pega no icone
             const item = event.target.closest("li")
@@ -11,7 +13,8 @@ periods.forEach((period)=>{
             if(id){
                 const isConfirma = confirm("tem certeza? Ele apaga")
                 if(isConfirma){
-                    console.log("tchau, agendamento")
+                    await scheduleCancel({id})
+                    schedulesDay()
                 }else{
                     console.log("nao apagou")
                 }
